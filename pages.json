@@ -1,0 +1,388 @@
+{
+	"pages": [
+		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/tabbar/home/home",
+			"style": {
+				"navigationBarTitleText": "非客钱包",
+				"navigationStyle":"custom",
+				"app-plus":{
+				"titleView":false
+				}
+				
+			}
+		},
+		{
+		    "path" : "pages/todoChild/orderList/orderList",
+		    "style" : {
+				"navigationBarTitleText": "订单列表"
+			}
+		},
+		{
+		    "path" : "pages/todoChild/orderDetail/orderDetail",
+		    "style" : {
+				"navigationBarTitleText": "订单详情"
+			}
+		},
+		{
+		    "path" : "pages/todoChild/writeOrder/writeOrder",
+		    "style" : {
+				"navigationBarTitleText": "填写订单"
+			}
+		},
+		{
+			"path": "pages/todoChild/shopDetail/shopDetail",
+			"style": {
+				"navigationBarTitleText": "商品详情"
+			}
+		},
+		{
+			"path": "pages/tabbar/todo/todo",
+			"style": {
+				"navigationBarTitleText": "积分商城"
+			}
+		},
+		{
+			"path": "pages/auth/auth",
+			"style": {
+				"navigationBarTitleText": "授权"
+			}
+		},
+		{
+			"path": "pages/todoChild/openMember/index",
+			"style": {
+				"navigationBarTitleText": "开通会员"
+			}
+		},
+		{
+			"path": "pages/tabbar/mine/mine",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		},
+		{
+			"path": "pages/todoChild/swapRole/index",
+			"style": {
+				"navigationBarTitleText": "角色互换"
+			}
+		},
+		{
+			"path": "pages/todoChild/apptRecord/index",
+			"style": {
+				"navigationBarTitleText": "申请记录"
+			}
+		},
+		{
+			"path": "pages/todoChild/myWork/index",
+			"style": {
+				"navigationBarTitleText": "我的工作"
+			}
+		},
+		{
+			"path": "pages/todoChild/myWork/myWorkDetail/index",
+			"style": {
+				"navigationBarTitleText": "我的工作"
+			}
+		},
+		{
+			"path": "pages/todoChild/myWorkPhoto/index",
+			"style": {
+				"navigationBarTitleText": "拍照任务"
+			}
+		},
+		{
+			"path": "pages/todoChild/myWorkPhoto/myWorkPhotoDetail/index",
+			"style": {
+				"navigationBarTitleText": "拍照任务"
+			}
+		},
+		{
+            "path" : "pages/todoChild/refundOrder/refundOrder",
+            "style" : {
+				"navigationBarTitleText": "退单详情"
+			}
+        },
+		{
+		    "path" : "pages/todoChild/address/addressIndex/addressIndex",
+		    "style" : {
+				"navigationBarTitleText": "地址列表"
+			}
+		},
+		{
+            "path" : "pages/todoChild/address/addressDetail/addressDetail",
+            "style" : {
+				"navigationBarTitleText": "操作地址"
+			}
+        },
+		{
+            "path" : "pages/todoChild/recommended/index",
+            "style" : {
+				"navigationBarTitleText": "推荐中心"
+			}
+        },
+		{
+            "path" : "pages/todoChild/distribution/index",
+            "style" : {
+				"navigationBarTitleText": "分销中心"
+			}
+        },
+		{
+            "path" : "pages/todoChild/member/index",
+            "style" : {
+				"navigationBarTitleText": "推荐会员"
+			}
+        },
+		{
+            "path" : "pages/todoChild/customerList/index",
+            "style" : {
+				"navigationBarTitleText": "客户列表"
+			}
+        },
+		{
+            "path" : "pages/todoChild/promoteGoods/index",
+            "style" : {
+				"navigationBarTitleText": "推广商品"
+			}
+        },
+		{
+            "path" : "pages/todoChild/withdraw/index",
+            "style" : {
+				"navigationBarTitleText": "提现"
+			}
+        },
+		{
+            "path" : "pages/todoChild/poster/index",
+            "style" : {
+				"navigationBarTitleText": "专属海报"
+			}
+        },
+		{
+		    "path" : "pages/todoChild/decorateHouse/index",
+		    "style" : {
+				"navigationBarTitleText": "装企推荐"
+			}
+		},
+		{
+		    "path" : "pages/todoChild/decorateHouse/shopHome/index",
+		    "style" : {
+				"navigationBarTitleText": "店铺主页"
+			}
+		},
+		{
+            "path" : "pages/todoChild/decoration/index",
+            "style" : {
+				"navigationBarTitleText": "装修分期"
+			}
+        },
+		// {
+		//     "path" : "pages/todoChild/decoration/decorationPicture/index",
+		//     "style" : {
+		// 		"navigationBarTitleText": "装修分期付，轻松就入住"
+		// 	}
+		// },
+		// {
+		//     "path" : "pages/todoChild/decoration/testonetest/index",
+		//     "style" : {
+		// 		"navigationBarTitleText": "测一测"
+		// 	}
+		// },
+		// {
+		//     "path" : "pages/todoChild/decoration/testonetest/testonetestsubmit/index",
+		//     "style" : {
+		// 		"navigationBarTitleText": "测一测"
+		// 	}
+		// },
+		// {
+  //           "path" : "pages/todoChild/decoration/application/index",
+  //           "style" : {
+		// 		"navigationBarTitleText": "申请"
+		// 	}
+  //       },
+		// {
+		//     "path" : "pages/todoChild/decoration/schedule/index",
+		//     "style" : {
+		// 		"navigationBarTitleText": "申请进度"
+		// 	}
+		// },
+		// {
+		//     "path" : "pages/todoChild/decoration/record/index",
+		//     "style" : {
+		// 		"navigationBarTitleText": "申请记录"
+		// 	}
+		// },
+		// {
+		//     "path" : "pages/todoChild/decoration/record/recordDetail/index",
+		//     "style" : {
+		// 		"navigationBarTitleText": "申请记录详情"
+		// 	}
+		// },
+		{
+		    "path" : "pages/todoChild/measureHome/index",
+		    "style" : {
+				"navigationBarTitleText": "约量房"
+			}
+		},
+		{
+		    "path" : "pages/todoChild/measureHome/ApptMeasureHome/index",
+		    "style" : {
+				"navigationBarTitleText": "约量房"
+			}
+		},
+		{
+		    "path" : "pages/todoChild/measureHome/ApptMeasureHome/success/index",
+		    "style" : {
+				"navigationBarTitleText": "约量房"
+			}
+		},
+		{
+		    "path" : "pages/todoChild/measureHome/ApptMeasureHome/chooseBussiness/index",
+		    "style" : {
+				"navigationBarTitleText": "商户选择"
+			}
+		},
+		{
+		    "path" : "pages/todoChild/measureHome/queryProgress/index",
+		    "style" : {
+				"navigationBarTitleText": "进度查询"
+			}
+		},
+		{
+		    "path" : "pages/todoChild/inShop/index",
+		    "style" : {
+				"navigationBarTitleText": "好店入驻"
+			}
+		},
+		{
+		    "path" : "pages/todoChild/inShop/upload/index",
+		    "style" : {
+				"navigationBarTitleText": "上传资料"
+			}
+		},
+		{
+		    "path" : "pages/todoChild/inShop/inviteShop/index",
+		    "style" : {
+				"navigationBarTitleText": "邀请商户"
+			}
+		},
+		{
+		    "path" : "pages/todoChild/recommendCenter/index",
+		    "style" : {
+				"navigationBarTitleText": "推荐中心"
+			}
+		},
+		{
+		    "path" : "pages/todoChild/inviteGift/index",
+		    "style" : {
+				"navigationBarTitleText": "邀请有礼"
+			}
+		},
+		{
+		    "path" : "pages/todoChild/calender/index",
+		    "style" : {
+				"navigationBarTitleText": "签到"
+			}
+		},
+		{
+		    "path" : "pages/todoChild/camera/index",
+		    "style" : {
+				"navigationBarTitleText": "拍照"
+			}
+		},
+		{
+		    "path" : "pages/todoChild/bankDetail/index",
+		    "style" : {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+		    "path" : "pages/todoChild/toLink/privacy/index",
+		    "style" : {
+				"navigationBarTitleText": "隐私政策"
+			}
+		},
+		{
+		    "path" : "pages/todoChild/toLink/service/index",
+		    "style" : {
+				"navigationBarTitleText": "服务协议"
+			}
+		},
+		{
+		    "path" : "pages/todoChild/toLink/webview/index",
+		    "style" : {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+		    "path" : "pages/tabbar/todo/scoreDetail/index",
+		    "style" : {
+				"navigationBarTitleText": "积分详情"
+			}
+		},
+		{
+		    "path" : "pages/todoChild/Designer/index",
+		    "style" : {
+				"navigationBarTitleText": "设计师"
+			}
+		},
+		{
+		    "path" : "pages/todoChild/coupon/index",
+		    "style" : {
+				"navigationBarTitleText": "优惠卷"
+			}
+		}
+		
+		
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "非客有家",
+		"navigationBarBackgroundColor": "#fff",
+		"backgroundColor": "#fff"
+	},
+	"tabBar": {
+		"borderStyle": "black",
+		"backgroundColor": "#fff",
+		"color": "#888888",
+		"selectedColor": "#313131",
+		"list": [{
+				"pagePath": "pages/tabbar/home/home",
+				"iconPath": "static/img/tabbar/home.png",
+				"selectedIconPath": "static/img/tabbar/selectedHome.png",
+				"text": "首页"
+			},
+			{
+					"pagePath": "pages/todoChild/decorateHouse/index",
+					"iconPath": "static/img/tabbar/loan.png",
+					"selectedIconPath": "static/img/tabbar/selectedLoan.png",
+					"text": "装企联盟"
+				},
+				
+			
+			
+			// {
+			// 		"pagePath": "pages/todoChild/decoration/index",
+			// 		"iconPath": "static/img/tabbar/loan.png",
+			// 		"selectedIconPath": "static/img/tabbar/selectedLoan.png",
+			// 		"text": "装修分期"
+			// 	},
+
+			{
+				"pagePath": "pages/tabbar/todo/todo",
+				"iconPath": "static/img/tabbar/shop.png",
+				"selectedIconPath": "static/img/tabbar/selectedShop.png",
+				"text": "积分商城"
+			},
+			{
+				"pagePath": "pages/tabbar/mine/mine",
+				"iconPath": "static/img/tabbar/mine.png",
+				"selectedIconPath": "static/img/tabbar/selectedMine.png",
+				"text": "我的"
+			}
+		]
+	},
+	"permission": {
+		"scope.userLocation": {
+			"desc": "非客将读取您的位置信息。"
+		}
+	}
+}

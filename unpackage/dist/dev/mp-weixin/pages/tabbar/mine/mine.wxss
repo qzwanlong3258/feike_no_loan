@@ -1,0 +1,121 @@
+
+page{
+	background: #FFFFFF;
+}
+
+
+.mine.data-v-3ec7e76c{
+	background: #FFFFFF;
+	
+	padding: 20rpx 0;
+}
+.mine-nav.data-v-3ec7e76c{
+	background-color: #FCE77A;
+	height: 330rpx;
+	margin:0 20rpx;
+}
+.top.data-v-3ec7e76c{
+	height: 120rpx;
+	padding: 20rpx 0 4rpx;
+}
+.mine-nav-top.data-v-3ec7e76c{
+	width: 120rpx;
+	height: 120rpx;
+	border-radius: 50%;
+	overflow: hidden;
+	margin: 0 auto;
+	border: 6rpx solid #F7B414;
+	/* padding: 10rpx; */
+	background: #FFFFFF;
+}
+.mine-nav-top-img.data-v-3ec7e76c{
+	width: 140rpx;
+	height: 140rpx;
+	display: block;
+	margin-top: -8rpx;
+	margin-left: -8rpx;
+}
+.btn-box.data-v-3ec7e76c{
+	height: 70rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	margin-top: 40rpx;
+}
+.btn.data-v-3ec7e76c{
+	color: #FFFFFF;
+	text-align: center;
+	background-color: #FAB310;
+	border-radius: 10rpx;
+	font-size: 26rpx;
+	line-height: 70rpx;
+	/* box-shadow: 0 4rpx 0 0  rgba(0,0,0,0.15); */
+}
+.mine-pic.data-v-3ec7e76c{
+	height: 40rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	margin-top: 20rpx;
+}
+.mine-pic image.data-v-3ec7e76c{
+	width: 30rpx;
+}
+.mine-text.data-v-3ec7e76c{
+	height: 40rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	font-size: 26rpx;
+	margin-top: 20rpx;
+}
+.schedule.data-v-3ec7e76c{
+	height: 70rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	line-height: 70rpx;
+	border-bottom: 2rpx solid rgba(241,241,241,1);
+}
+.iconclass.data-v-3ec7e76c{
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.schedule_logo.data-v-3ec7e76c{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	font-size: 22rpx;
+	font-weight: Regular;
+	color: #333333;
+	padding: 20rpx 0;
+	border-bottom: 6px solid #F1F1F1;
+}
+.schedule_logo image.data-v-3ec7e76c{
+	width: 60rpx;
+}
+.mine-link.data-v-3ec7e76c{
+	height: 80rpx;
+	border-bottom: 2rpx solid rgba(241,241,241,1);
+	line-height: 80rpx;
+	position: relative;
+}
+.mine-link image.data-v-3ec7e76c{
+	width: 30rpx;
+	margin-left: 30rpx;
+	vertical-align: middle;
+}
+.mine-link text.data-v-3ec7e76c{
+	color: #333333;
+	font-weight:Regular ;
+	font-size: 24rpx;
+	margin-left: 20rpx;
+	vertical-align: middle;
+}
+.mine-link .iconclass.data-v-3ec7e76c{
+	font-size: 30rpx;
+	color: #666666;
+	right: 20rpx;
+}
+

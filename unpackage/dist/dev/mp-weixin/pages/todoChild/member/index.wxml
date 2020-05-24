@@ -1,0 +1,1 @@
+<view class="member-box data-v-c786297c" style="{{'height:'+(pageHeight+'rpx')+';'}}"><image class="background-image data-v-c786297c" src="{{img.backgroundImage}}" mode="widthFix" data-event-opts="{{[['load',[['backgroundLoad',['$event']]]]]}}" bindload="__e"></image><image class="main-button data-v-c786297c" src="{{img.mainButton}}" mode="aspectFit"></image></view>

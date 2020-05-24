@@ -1,0 +1,59 @@
+
+page{
+	background: #FFFFFF;
+}
+
+
+.recomCenter.data-v-cc6412c2{
+	padding: 20rpx 0;
+}
+.recomCenter-nav.data-v-cc6412c2{
+	background-color: #FCE77A;
+	height: 420rpx;
+	margin:0 20rpx ;
+}
+.top.data-v-cc6412c2{
+	height: 120rpx;
+	padding: 20rpx 0 4rpx;
+}
+.recomCenter-nav-top.data-v-cc6412c2{
+	width: 120rpx;
+	height: 120rpx;
+	border-radius: 50%;
+	overflow: hidden;
+	margin: 0 auto;
+}
+.recomCenter-nav-top-img.data-v-cc6412c2{
+	width: 140rpx;
+	height: 140rpx;
+	display: block;
+	margin-top: -10rpx;
+	margin-left: -10rpx;
+}
+.btn-box.data-v-cc6412c2{
+	height: 30rpx;
+	margin-top: 30rpx;
+}
+.btn.data-v-cc6412c2{
+	height: 30rpx;
+	line-height: 30rpx;
+	text-align: center;
+	width: 120rpx;
+	border: 2rpx solid #605800;
+	margin: 0 auto;
+	font-size: 20rpx;
+}
+.recomCenter-pic.data-v-cc6412c2{
+	height: 60rpx;
+	
+	font-family:Microsoft YaHei;
+	font-weight:400;
+	color:rgba(0,0,0,1);
+	font-size: 26rpx;
+	margin: 30rpx 0;
+}
+.recomCenter-pic image.data-v-cc6412c2{
+	width: 40rpx;
+	margin-right: 10rpx;
+}
+

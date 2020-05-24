@@ -1,0 +1,30 @@
+
+page{
+	background: #FFFFFF;
+}
+
+
+.scroll-Y.data-v-059cc3ca{
+		height: 1115rpx;
+		width: 100%;
+}
+.home-hd.data-v-059cc3ca{
+		background: #fff;
+		position: relative;
+}
+.home-top.data-v-059cc3ca {
+	position: absolute;
+	bottom: 2px;
+	width: 100%;
+	height: 70rpx;
+	z-index: 99;
+}
+.swiper-img.data-v-059cc3ca {
+}
+.bottom-show.data-v-059cc3ca {
+	margin: 25rpx 30rpx 0 25rpx ;
+}
+.bottom-show image.data-v-059cc3ca {
+	width: 100%;
+}
+
