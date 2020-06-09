@@ -187,6 +187,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 var _image = __webpack_require__(/*! @/config/image.js */ 35);
 var _storage = __webpack_require__(/*! @/utils/storage.js */ 17);
 var _router = __webpack_require__(/*! @/config/router.js */ 22);
@@ -210,7 +214,7 @@ var _self;var _default =
         phone: '广东 深圳' },
 
       agreeM: false,
-      img: [_image.MEMBER_ONE, _image.MEMBER_TWO, _image.MEMBER_THREE, _image.MEMBER_FOUR, _image.MEMBER_FIVE, _image.MEMBER_SIX, _image.MEMBER_SEVEN, _image.MEMBER_EIGHT],
+      img: [_image.MEMBER_ONE, _image.MEMBER_TWO, _image.MEMBER_THREE, _image.MEMBER_FOUR, _image.MEMBER_FIVE, _image.MEMBER_SIX, _image.MEMBER_SEVEN, _image.MEMBER_EIGHT, _image.VIP],
       datalist: [
       { img: _image.MEMBER_ONE, nametop: '新房免费', namebottom: '除甲醛' },
       { img: _image.MEMBER_TWO, nametop: '新房', namebottom: '开荒服务' },
@@ -250,68 +254,70 @@ var _self;var _default =
         uni.navigateTo({ url: "".concat(_router.TO_WEB, "?id=").concat(e) });
       }
     },
-    pay: function () {var _pay = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var e, payContent, payRes, applyId, _e, _e2;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-                if (!this.agreeM) {
-                  uni.showToast({
-                    title: "请选择金额",
-                    icon: 'none',
-                    duration: 2000 });
+    pay: function () {var _pay = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var e, payContent, payRes, applyId, _e, _e2;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (
+                this.agreeM) {_context.next = 3;break;}
+                uni.showToast({
+                  title: "请选择金额",
+                  icon: 'none',
+                  duration: 2000 });return _context.abrupt("return");case 3:if (
 
-                }
-                if (!this.agree) {
-                  uni.showToast({
-                    title: "请阅读会员协议",
-                    icon: 'none',
-                    duration: 2000 });
 
-                }
+
+                this.agree) {_context.next = 6;break;}
+                uni.showToast({
+                  title: "请阅读会员协议",
+                  icon: 'none',
+                  duration: 2000 });return _context.abrupt("return");case 6:
+
+
+
                 e = {
                   openid: this.openId,
-                  price: '0.01' };_context.next = 5;return (
+                  price: '198' };_context.next = 9;return (
 
-                  (0, _wx.postPay)(e));case 5:payContent = _context.sent;
+                  (0, _wx.postPay)(e));case 9:payContent = _context.sent;
                 console.log(payContent);
-                payContent.paySign = payContent.sign;_context.next = 10;return (
-                  (0, _package.wxpay)(payContent));case 10:payRes = _context.sent;if (!(
-                payRes.type == 'success')) {_context.next = 39;break;}_context.next = 14;return (
-                  (0, _auth.getApplyId)());case 14:applyId = _context.sent.applyId;if (!
-                applyId) {_context.next = 20;break;}_context.next = 18;return (
+                payContent.paySign = payContent.sign;_context.next = 14;return (
+                  (0, _package.wxpay)(payContent));case 14:payRes = _context.sent;if (!(
+                payRes.type == 'success')) {_context.next = 43;break;}_context.next = 18;return (
+                  (0, _auth.getApplyId)());case 18:applyId = _context.sent.applyId;if (!
+                applyId) {_context.next = 24;break;}_context.next = 22;return (
                   (0, _auth.addScore)({
                     id: applyId,
-                    integral: "100" }));case 18:_context.next = 20;return (
+                    integral: "100" }));case 22:_context.next = 24;return (
 
                   (0, _auth.addScoreRecord)({
                     userid: applyId,
                     money: "100",
-                    msg: "邀请会员赠送100积分" }));case 20:_context.next = 22;return (
+                    msg: "邀请会员赠送100积分" }));case 24:_context.next = 26;return (
 
 
                   (0, _auth.addScore)({
                     id: this.userInfo.id,
-                    integral: "100" }));case 22:_context.next = 24;return (
+                    integral: "100" }));case 26:_context.next = 28;return (
 
                   (0, _auth.addScoreRecord)({
                     userid: this.userInfo.id,
                     money: "100",
-                    msg: "注册会员赠送100积分" }));case 24:if (!(
+                    msg: "注册会员赠送100积分" }));case 28:if (!(
 
-                this.userInfo.level == "黄金会员")) {_context.next = 30;break;}
+                this.userInfo.level == "黄金会员")) {_context.next = 34;break;}
                 _e = {
                   id: this.userInfo.cardId,
-                  number: '365' };_context.next = 28;return (
+                  number: '365' };_context.next = 32;return (
 
-                  (0, _auth.aginMember)(_e));case 28:_context.next = 38;break;case 30:if (!
+                  (0, _auth.aginMember)(_e));case 32:_context.next = 42;break;case 34:if (!
 
 
 
-                this.userInfo.state) {_context.next = 36;break;}
+                this.userInfo.state) {_context.next = 40;break;}
                 _e2 = {
                   id: this.userInfo.cardId,
-                  number: '365' };_context.next = 34;return (
+                  number: '365' };_context.next = 38;return (
 
-                  (0, _auth.oldMember)(_e2));case 34:_context.next = 38;break;case 36:_context.next = 38;return (
+                  (0, _auth.oldMember)(_e2));case 38:_context.next = 42;break;case 40:_context.next = 42;return (
 
-                  (0, _auth.newMember)({ number: "365" }));case 38:
+                  (0, _auth.newMember)({ number: "365" }));case 42:
 
 
 
@@ -319,7 +325,7 @@ var _self;var _default =
 
 
                 uni.navigateBack({
-                  delta: 1 });case 39:case "end":return _context.stop();}}}, _callee, this);}));function pay() {return _pay.apply(this, arguments);}return pay;}() },
+                  delta: 1 });case 43:case "end":return _context.stop();}}}, _callee, this);}));function pay() {return _pay.apply(this, arguments);}return pay;}() },
 
 
 

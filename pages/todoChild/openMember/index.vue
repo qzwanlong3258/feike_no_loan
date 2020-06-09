@@ -1,6 +1,9 @@
 <template>
 	<view class="recomCenter">
-		<view class="recomCenter-nav " >
+		<view class="recomCenter-nav " style="position: relative;" >
+			
+			<image :src="img[8]" v-if="userInfo.level=='黄金会员'" style="position: absolute;right: 0;top: 0;width: 250rpx;" mode="widthFix"></image>
+			<view style="position: absolute;width: 100%;height: 100%;">
 			<view class="top">
 				<view class="recomCenter-nav-top">
 					<image :src="userInfo.avatarUrl" class="recomCenter-nav-top-img" mode="aspectFill">
@@ -11,6 +14,7 @@
 			<view style="text-align: center;color: #000000;font-size: 20rpx;margin: 20rpx 200rpx 0 200rpx;border-left:2rpx solid #000000 ;border-right:2rpx solid #000000 ;">10249人</view>
 			<view style="text-align: center;color: #000000;font-size: 20rpx;margin: 0 200rpx;border-left:2rpx solid #000000 ;border-right:2rpx solid #000000 ;">加入黄金会员</view>
 			<!-- <view style="position: absolute;right: 50rpx;top: 50rpx;font-size: 28rpx;color: #999999;">《会员协议》</view> -->
+			</view>
 		</view>
 		<view class="schedule">
 			<view style="flex: 1;color: #333333;font-size: 26rpx;text-align: center;font-weight: Regular;">选择开通类型</view>
@@ -24,8 +28,8 @@
 				<view style="height: 30rpx;line-height: 30rpx;text-align: center;font-size: 18rpx;color: #666666;">赠送100积分</view>
 			</view>
 			<view style="flex: 1;"></view>
-			<view style="flex: 1;text-align: right;line-height: 80rpx;">
-				<label class="radio" style="font-size: 25rpx;"><text style="color: #AD0505;font-size: 24rpx;margin-right: 10rpx;vertical-align: middle;">￥99</text><radio style="vertical-align: middle;"  value="r1" :checked="agreeM" @click="agreeClick()" /></label>
+			<view style="flex: 1;text-align: right;line-height: 80rpx;padding-right: 20rpx;">
+				<label class="radio" style="font-size: 25rpx;"><text style="color: #AD0505;font-size: 24rpx;margin-right: 10rpx;vertical-align: middle;">￥198</text><radio style="vertical-align: middle;"  value="r1" :checked="agreeM" @click="agreeClick()" /></label>
 			</view>
 		</view>
 		<view style="color: #333333;font-size: 26rpx;text-align: left;height: 90rpx;line-height: 90rpx;margin-left: 20rpx;margin-bottom: 20rpx;">黄金会员的八大权益</view>
@@ -112,7 +116,7 @@
 </template>
 
 <script>
-	import {MEMBER_ONE,MEMBER_TWO,MEMBER_THREE,MEMBER_FOUR,MEMBER_FIVE,MEMBER_SIX,MEMBER_SEVEN,MEMBER_EIGHT} from '@/config/image.js'
+	import {MEMBER_ONE,MEMBER_TWO,MEMBER_THREE,MEMBER_FOUR,MEMBER_FIVE,MEMBER_SIX,MEMBER_SEVEN,MEMBER_EIGHT,VIP} from '@/config/image.js'
 	import { getStorage } from '@/utils/storage.js';
 	import {TO_WEB} from '@/config/router.js'
 	import {postPay} from '@/api/wx.js'
@@ -135,7 +139,7 @@ export default {
 				phone:'广东 深圳'
 			},
 			agreeM:false,
-			img:[MEMBER_ONE,MEMBER_TWO,MEMBER_THREE,MEMBER_FOUR,MEMBER_FIVE,MEMBER_SIX,MEMBER_SEVEN,MEMBER_EIGHT],
+			img:[MEMBER_ONE,MEMBER_TWO,MEMBER_THREE,MEMBER_FOUR,MEMBER_FIVE,MEMBER_SIX,MEMBER_SEVEN,MEMBER_EIGHT,VIP],
 			datalist:[
 				{img:MEMBER_ONE,nametop:'新房免费',namebottom:'除甲醛'},
 				{img:MEMBER_TWO,nametop:'新房',namebottom:'开荒服务'},
@@ -182,6 +186,7 @@ export default {
 												icon: 'none',
 												duration: 2000,
 											});
+											return;
 			}
 			if(!this.agree){
 				uni.showToast({
@@ -189,10 +194,11 @@ export default {
 												icon: 'none',
 												duration: 2000,
 											});
+											return;
 			}
 			let e={
 				openid:this.openId,
-				price:'0.01'
+				price:'198'
 			}
 			let payContent = await postPay(e)
 			console.log(payContent)

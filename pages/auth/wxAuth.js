@@ -8,7 +8,8 @@ import {
 	login
 } from '@/utils/openLogin.js'
 import {
-	setStorage,getStorage
+	setStorage,
+	getStorage
 } from '@/utils/storage.js'
 import {
 	LOGIN_WECHAT_LOGIN,
@@ -18,10 +19,29 @@ import {
 import {
 	COMPANY_LOGO
 } from '@/config/image.js'
-import { MINE ,DECORATION,BANK_DETAIL, TO_WEB,INSHOP,QUERYPROGRESS,LOAN_APPLICATION,LOAN_TESTONETEST,SHOP} from '@/config/router.js';
-import { refreshToken } from  '../../utils/openLogin';
+import {
+	MINE,
+	DECORATION,
+	BANK_DETAIL,
+	TO_WEB,
+	INSHOP,
+	QUERYPROGRESS,
+	LOAN_APPLICATION,
+	LOAN_TESTONETEST,
+	SHOP,
+	DECORATE,
+	TO_DESGER,
+	HOME
+} from '@/config/router.js';
+import {
+	refreshToken
+} from '../../utils/openLogin';
 import * as home from "@/api/tabbar/home.js";
-import {setApplyId,addScore,addScoreRecord} from '@/api/auth.js'
+import {
+	setApplyId,
+	addScore,
+	addScoreRecord
+} from '@/api/auth.js'
 
 
 
@@ -32,15 +52,15 @@ const wxAuth = {
 		return {
 			yldLogo: COMPANY_LOGO,
 			session_key: '',
-			show:true,
-			dataL:'',
-			name:'',
-			user:'',
-			serve:''
+			show: true,
+			dataL: '',
+			name: '',
+			user: '',
+			serve: ''
 		}
 	},
 
-	onLoad:  function(options) {
+	onLoad: function(options) {
 		//请求微信接口wx.login,获取code
 		// const code = await this.login();
 		// // const code = getStorage('code')
@@ -57,89 +77,108 @@ const wxAuth = {
 		// })
 		// this.session_key = session_key;
 		this.session_key = getStorage('session_key')
-		this.name=options.name
-		home.loadHomeCarousel({type:4}).then(res => {
-			this.user = res.list.find(item=>item.url=='用户协议').img;
-			this.serve = res.list.find(item=>item.url=='服务协议').img;
+		this.name = options.name
+		home.loadHomeCarousel({
+			type: 4
+		}).then(res => {
+			this.user = res.list.find(item => item.url == '用户协议').img;
+			this.serve = res.list.find(item => item.url == '服务协议').img;
 		});
 		console.log(this.session_key)
+
+
 		
+
+
 	},
 	methods: {
-		linkToBankOne(){
+		goBack() {
+			uni.reLaunch({
+				url: HOME
+			})
+		},
+		linkToBankOne() {
 			let ch = "/";
 			// var str = "这是一/个变量，这是一个变量";
-			let a = this.user.replace(new RegExp(ch,'g'),"!");
+			let a = this.user.replace(new RegExp(ch, 'g'), "!");
 			let e = a.replace(":", "*")
-			
-			var testmsg=e.substring(e.lastIndexOf('.')+1)
-			        const extensio = testmsg === 'jpg'
-			        const extensio2 = testmsg === 'png'
-			        const extensio3 = testmsg === 'jpeg'
-			        if(extensio || extensio2 || extensio3) {
-			          uni.navigateTo({ url: `${BANK_DETAIL}?id=${e}` });
-			        } else {	
-					 uni.navigateTo({ url: `${TO_WEB}?id=${e}` });
-					}
+
+			var testmsg = e.substring(e.lastIndexOf('.') + 1)
+			const extensio = testmsg === 'jpg'
+			const extensio2 = testmsg === 'png'
+			const extensio3 = testmsg === 'jpeg'
+			if (extensio || extensio2 || extensio3) {
+				uni.navigateTo({
+					url: `${BANK_DETAIL}?id=${e}`
+				});
+			} else {
+				uni.navigateTo({
+					url: `${TO_WEB}?id=${e}`
+				});
+			}
 		},
-		linkToBankTwo(){
+		linkToBankTwo() {
 			let ch = "/";
 			// var str = "这是一/个变量，这是一个变量";
-			let a =this.serve.replace(new RegExp(ch,'g'),"!");
+			let a = this.serve.replace(new RegExp(ch, 'g'), "!");
 			let e = a.replace(":", "*")
-			
-			
-			var testmsg=e.substring(e.lastIndexOf('.')+1)
-			        const extensio = testmsg === 'jpg'
-			        const extensio2 = testmsg === 'png'
-			        const extensio3 = testmsg === 'jpeg'
-			        if(extensio || extensio2 || extensio3) {
-			          uni.navigateTo({ url: `${BANK_DETAIL}?id=${e}` });
-			        } else {	
-					 uni.navigateTo({ url: `${TO_WEB}?id=${e}` });
-					}
+
+
+			var testmsg = e.substring(e.lastIndexOf('.') + 1)
+			const extensio = testmsg === 'jpg'
+			const extensio2 = testmsg === 'png'
+			const extensio3 = testmsg === 'jpeg'
+			if (extensio || extensio2 || extensio3) {
+				uni.navigateTo({
+					url: `${BANK_DETAIL}?id=${e}`
+				});
+			} else {
+				uni.navigateTo({
+					url: `${TO_WEB}?id=${e}`
+				});
+			}
 		},
-		noBtn(){
+		noBtn() {
 			uni.showToast({
-											title: "若不同意协议则无法登录和操作下单哦",
-											icon:"none",
-											duration: 2000,
-										});
+				title: "若不同意协议则无法登录和操作下单哦",
+				icon: "none",
+				duration: 2000,
+			});
 		},
-		 async yesBtn(){
-			
+		async yesBtn() {
+
 			setStorage('sessionKey', this.session_key)
 			setStorage('tempToken', this.dataL.token)
 			setStorage('refreshToken', this.dataL.refreshToken)
 			setStorage('userInfo', this.dataL.UserInfo)
 			setStorage('isLogin', true)
 			console.log(this.name)
-			
-			let openid=getStorage('openId')
-			let e =getStorage('applyId')
-			if(e){
+
+			let openid = getStorage('openId')
+			let e = getStorage('applyId')
+			if (e) {
 				await setApplyId({
-				      applyId: e
-				  })
-				if(getStorage('newUser')){
+					applyId: e
+				})
+				if (getStorage('newUser')) {
 					await addScore({
-					    id: e,
-					    integral: "500"
-					    })
-						await addScoreRecord({
-					 userid: e,
-					 money: "500",
-					 msg: "邀请用户赠送500积分"
+						id: e,
+						integral: "10"
+					})
+					await addScoreRecord({
+						userid: e,
+						money: "10",
+						msg: "邀请用户赠送10积分"
 					})
 				}
 			}
-			
-			
-			
-			
-			
-			if(this.name=='decoration'){
-				 uni.switchTab({
+
+
+
+
+
+			if (this.name == 'decoration') {
+				uni.switchTab({
 					url: DECORATION,
 					fail: () => {
 						uni.reLaunch({
@@ -148,8 +187,8 @@ const wxAuth = {
 					}
 				})
 			}
-			if(this.name=='mine'){
-				 uni.switchTab({
+			if (this.name == 'mine') {
+				uni.switchTab({
 					url: MINE,
 					fail: () => {
 						uni.reLaunch({
@@ -158,8 +197,8 @@ const wxAuth = {
 					}
 				})
 			}
-			if(this.name=='todo'){
-				 uni.switchTab({
+			if (this.name == 'todo') {
+				uni.switchTab({
 					url: SHOP,
 					fail: () => {
 						uni.reLaunch({
@@ -168,8 +207,8 @@ const wxAuth = {
 					}
 				})
 			}
-			if(this.name=='inShop'){
-				 uni.switchTab({
+			if (this.name == 'inShop') {
+				uni.switchTab({
 					url: INSHOP,
 					fail: () => {
 						uni.reLaunch({
@@ -178,9 +217,9 @@ const wxAuth = {
 					}
 				})
 			}
-			if(this.name=='queryProgress'){
-				 uni.switchTab({
-					url: INSHOP,
+			if (this.name == 'queryProgress') {
+				uni.switchTab({
+					url: QUERYPROGRESS,
 					fail: () => {
 						uni.reLaunch({
 							url: QUERYPROGRESS,
@@ -188,9 +227,9 @@ const wxAuth = {
 					}
 				})
 			}
-			if(this.name=='loanApply'){
-				 uni.switchTab({
-					url: INSHOP,
+			if (this.name == 'loanApply') {
+				uni.switchTab({
+					url: LOAN_APPLICATION,
 					fail: () => {
 						uni.reLaunch({
 							url: LOAN_APPLICATION,
@@ -198,9 +237,9 @@ const wxAuth = {
 					}
 				})
 			}
-			if(this.name=='testonetest'){
-				 uni.switchTab({
-					url: INSHOP,
+			if (this.name == 'testonetest') {
+				uni.switchTab({
+					url: LOAN_TESTONETEST,
 					fail: () => {
 						uni.reLaunch({
 							url: LOAN_TESTONETEST,
@@ -208,80 +247,115 @@ const wxAuth = {
 					}
 				})
 			}
-			if(this.name=='link'){
-				let url =getApp().globalData.link
-				 let ch = "/";
-				 								// var str = "这是一/个变量，这是一个变量";
-				 								let a = url.replace(new RegExp(ch,'g'),"!");
-				 								let c = a.replace(":", "*")
-												let user = JSON.stringify(this.dataL.UserInfo)
-												
-												 // console.log(user)
-												 // console.log(this.dataL.UserInfo)
-				 uni.navigateTo({ url: `${TO_WEB}?id=${c}&tempToken=${this.dataL.token}&refreshToken=${this.dataL.refreshToken}&userInfo=${user}&isLogin=${true}`});
-				 
+
+
+			if (this.name == 'decorateHouse') {
+				uni.switchTab({
+					url: DECORATE,
+					fail: () => {
+						uni.reLaunch({
+							url: DECORATE,
+						})
+					}
+				})
 			}
-			
-			
-			
-			
+			if (this.name == 'designer') {
+				uni.switchTab({
+					url: TO_DESGER,
+					fail: () => {
+						uni.reLaunch({
+							url: TO_DESGER,
+						})
+					}
+				})
+			}
+
+			if (this.name == 'link') {
+				let url = getApp().globalData.link
+				let ch = "/";
+				// var str = "这是一/个变量，这是一个变量";
+				let a = url.replace(new RegExp(ch, 'g'), "!");
+				let c = a.replace(":", "*")
+				let user = JSON.stringify(this.dataL.UserInfo)
+
+				// console.log(user)
+				// console.log(this.dataL.UserInfo)
+				uni.navigateTo({
+					url: `${TO_WEB}?id=${c}&tempToken=${this.dataL.token}&refreshToken=${this.dataL.refreshToken}&userInfo=${user}&isLogin=${true}`
+				});
+
+			}
+
+
+
+
 		},
+		
 		getUserInfo: async function(e) {
-			if (!this.session_key) {
-				refreshToken()
-				this.session_key = getStorage('session_key')
+			// console.log(e)
+			if (e.detail.userInfo) {
+				//用户按了允许授权按钮
+				// console.log('15')
 				if (!this.session_key) {
-					return wx.showToast({
-						title: '登录失败，重新授权试试',
-						icon: 'none'
-					})
+					await refreshToken()
+					this.session_key = getStorage('session_key')
+					if (!this.session_key) {
+						return wx.showToast({
+							title: '登录失败，重新授权试试',
+							icon: 'none'
+						})
+					}
+
 				}
+				const {
+					encryptedData,
+					iv
+				} = e.detail
+				// console.log(e.detail) 
+				//获取用户的微信信息
+				const {
+					openId,
+					avatarUrl,
+					nickName
+				} = await request({
+					method: 'POST',
+					url: LOGIN_WECHAT_GET_USERINFO,
+					data: {
+						encryptedData,
+						iv,
+						"appId": APP_ID,
+						"session_key": this.session_key
+					},
+					needToken: false,
+					showLoadind: false,
+					hideLoading: false,
+					errorText: '登录失败'
+				})
+				//进行用户注册或登录，将返回的信息储存在本地缓存 
+				const {
+					data
+				} = await request({
+					method: 'POST',
+					url: LOGIN_APP_REGISTER_LOGIN,
+					data: {
+						nickName,
+						appId: APP_ID,
+						openid: openId,
+						headImg: avatarUrl
+					},
+					needToken: false,
+					loadingText: '正在登录',
+					returnHeader: true,
+					errorText: '登录失败'
+				})
+				this.dataL = data
+				this.show = false
+			} else {
+				//用户按了拒绝按钮
 				
 			}
-			const {
-				encryptedData,
-				iv
-			} = e.detail
-			console.log(e.detail) 
-			//获取用户的微信信息
-			const {
-				openId,
-				avatarUrl,
-				nickName
-			} = await request({
-				method: 'POST',
-				url: LOGIN_WECHAT_GET_USERINFO,
-				data: {
-					encryptedData,
-					iv,
-					"appId": APP_ID,
-					"session_key": this.session_key
-				},
-				needToken: false,
-				showLoadind: false,
-				hideLoading: false,
-				errorText: '登录失败'
-			})
-			//进行用户注册或登录，将返回的信息储存在本地缓存 
-			const {
-				data
-			} = await request({
-				method: 'POST',
-				url: LOGIN_APP_REGISTER_LOGIN,
-				data: {
-					nickName,
-					appId: APP_ID,
-					openid: openId,
-					headImg: avatarUrl
-				},
-				needToken: false,
-				loadingText: '正在登录',
-				returnHeader: true,
-				errorText: '登录失败'
-			})
-			this.dataL=data
-			this.show=false
-			
+
+
 			// await uni.switchTab({
 			// 	url: getApp().globalData.fm,
 			// 	fail: () => {
@@ -298,7 +372,18 @@ const wxAuth = {
 	 */
 	onShareAppMessage: function() {
 
+	},
+	bindGetUserInfo: function(e) {
+		console.log(e.detail.userInfo)
+		if (e.detail.userInfo) {
+			//用户按了允许授权按钮
+			alert(12)
+		} else {
+			//用户按了拒绝按钮
+			alert(33)
+		}
 	}
+
 }
 
 export default wxAuth;

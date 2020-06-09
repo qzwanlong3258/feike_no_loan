@@ -1,14 +1,14 @@
 <template>
-	<view>
-		<image :src="img[0]" mode="widthFix" style="width: 100%;display: block;"></image>
+	<view :hidden='!imgShow' style="padding-bottom: 60rpx;">
+		<image :src="item.storePhotos"  mode="widthFix" style="width: 100%;display: block;"></image>
 		<view style="padding: 30rpx;">
 			<view>{{item.name}}</view>
-			<view class="starOne" style="margin-top: 5rpx;"></view>
+			<view :class="{starOne:item.level=='0',starTwo:item.level=='1',starThree:item.level=='2',starFour:item.level=='3',starFive:item.level=='4',starSix:item.level=='5',starSeven:item.level=='6',starEight:item.level=='7',starNine:item.level=='8',starTen:item.level=='9','starEleven':item.level=='10'}" style="margin-top: 5rpx;"></view>
 		</view>
-		<view style="padding: 30rpx;display: flex;border-top:2rpx solid #F1F1F1 ;
+		<view @click="map" style="padding: 30rpx;display: flex;border-top:2rpx solid #F1F1F1 ;
 			border-bottom:2rpx solid #F1F1F1 ;position: relative;">
 			<view class="iconfont icondizhi" style="font-size: 30rpx;margin-right: 20rpx;"></view>
-			<view class="address" @click="map" style="padding-right: 10rpx;">{{item.address}}</view>
+			<view class="address"  style="padding-right: 10rpx;">{{item.address}}</view>
 			<view class="iconfont iconyou" style="position: absolute;right: 5rpx;top: 25rpx;"></view>
 		</view>
 		<view style="padding: 30rpx;"> 
@@ -25,11 +25,16 @@
 			</view>
 			<view class="right" style="flex-basis: 160rpx;display: flex;justify-content: center;align-items: center;">
 				<!-- item.show&& -->
-				<view v-if="item.show&&item.have==0" style="height: 60rpx ;width:140rpx;border-radius: 30rpx;background: #FFEA04;text-align: center;line-height: 60rpx;font-size: 24rpx;"@click="get(item)">领取</view>
+				<view v-if="item.show&&item.have==0" style="height: 60rpx ;width:140rpx;border-radius: 30rpx;background: #FFEA04;text-align: center;line-height: 60rpx;font-size: 24rpx;" @click="get(item)">领取</view>
 				<view v-if="!item.show" style="height: 60rpx ;width:140rpx;border-radius: 30rpx;background: #FFEA04;text-align: center;line-height: 60rpx;font-size: 24rpx;">已过期</view>
 				<view v-if="item.show&&item.have==1" style="height: 60rpx ;width:140rpx;border-radius: 30rpx;background: #FFEA04;text-align: center;line-height: 60rpx;font-size: 24rpx;">已领取</view>
 			</view>
 		</view>
+		<image :src="item.details" @load='imgshow' mode="widthFix" style="width: 100%;"></image>
+		<view class="apptMeasureHome_ft">
+			<view class="btn" @click="clickNavkefu">立即咨询</view>
+		</view>
+		
 		<view class="mask" :style="{visibility: show ? 'visible' : 'hidden'}">
 			<view class="mask-box">
 				<image :src="img[2]" style="width: 100%;" mode="widthFix"></image>
@@ -40,6 +45,8 @@
 				<text style="font-size:38rpx;color: #FFFFFF;">元</text></view>
 				<view style="color: #BB5520;font-size: 20rpx;position: absolute;left: 50%;transform: translateX(-48%);top: 220rpx;">{{dataL.describe}}</view>
 				<view style="color: #FFBC44;font-size: 18rpx;position: absolute;left: 50%;transform: translateX(-48%);top: 420rpx;">有效期：{{dataL.begin}}-{{dataL.end}}</view>
+				
+				<view style='width: 280rpx;height: 100rpx;position: absolute;left: 50%;transform: translateX(-50%);top: 460rpx;' @click="linkToCoupon"></view>
 			</view>
 		</view>
 		
@@ -53,21 +60,39 @@ import {makePhoneCall} from '@/config/package.js';
 var QQMapWX = require('@/utils/qqmap-wx-jssdk.js')
 import {  CROSS } from "@/config/image.js";
 import {getCoupon ,postCoupon} from '@/api/decorateHome.js'
+import {COUPON} from '@/config/router.js'
+import {loadCoupon} from '@/api/decorateHome.js'
+
 var _self;
 export default {
 	data() {
 		return{
 			img:[DECORATE_HOUSE,STAR,MASK_IMG,CROSS],
-			count:0,
 			show:false,
 			item:{} ,//装企信息
 			dataList:[],
 			dataL:{},
-			uuid:''
+			uuid:'',
+			imgShow:false
 		}
 	},
 	methods:{
 		
+		
+		imgshow(){
+			_self.imgShow=true
+		},
+		linkToCoupon(){
+			
+			loadCoupon().then(res=>{
+				let a=res.list
+				let e=JSON.stringify(a)
+				uni.navigateTo({
+					url:`${COUPON}?data=${e}` 
+				})
+			})
+					
+		},
 		
 		handerCheckInChange: async function(e) {
 		
@@ -81,8 +106,9 @@ export default {
 			})
 		},
 		get(e){
-			this.count++
-			if(this.count==1){
+			let count=0
+			count++
+			if(count==1){
 				this.show = !this.show
 				_self.dataL=e
 				
@@ -93,9 +119,11 @@ export default {
 		},
 		
 		map(){
+			console.log(31232)
 			let qqmapsdk = new QQMapWX({
 				key: 'RXMBZ-V3XKW-EPHR7-R7B2O-S75AK-3TFHW'
 			});
+			console.log(this.item.address)
 			qqmapsdk.geocoder({
 			      address: this.item.address,
 			      success: function(res) {
@@ -111,6 +139,20 @@ export default {
 			    })
 			
 		},
+		getTime:function(){
+		
+		var date = new Date(),
+		year = date.getFullYear(),
+		month = date.getMonth() + 1,
+		day = date.getDate(),
+		hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours(),
+		minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes(),
+		second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+		month >= 1 && month <= 9 ? (month = "0" + month) : "";
+		day >= 0 && day <= 9 ? (day = "0" + day) : "";
+		var timer = year + '-' + month + '-' + day ;
+		return timer;
+		},
 		getList(e){
 			getCoupon({uuid:e.uuid}).then(res=>{
 				console.log(res)
@@ -119,15 +161,15 @@ export default {
 				_self.dataList=res.list.map(res=>{
 					// console.log(Date.parse(res.end.replace('-', '/')))
 					// console.log(new Date().getTime())
-					if(Number(Date.parse(res.end.replace('-', '/')))>new Date().getTime()){
+					if(Number(Date.parse(res.end.replace('-', '/')))<Number(Date.parse(this.getTime().replace('-', '/'))) ){
 						return {
 							...res,
-							show:true
+							show:false
 						}
 					} else {
 						return {
 							...res,
-							show:false
+							show:true
 						}
 					}
 				})
@@ -139,6 +181,7 @@ export default {
 		 _self=this
 		 this.item=JSON.parse(options.item) 
 		 this.getList(this.item)
+		 
 	 }
 };
 </script>
@@ -149,12 +192,73 @@ export default {
 	}
 </style>
 <style scoped>
-	.starOne{
+	.starOne {
+		background: url('https://www.feiaizn.com/images/20200522114244_xingxing.png') no-repeat;
+		background-size: 150rpx 260rpx;
+		height: 22rpx;
+		 background-position: -8rpx -5rpx; 
+		/* background-position: -8rpx -27rpx; */
 		
-		background:url('https://www.feiaizn.com/images/20200522114244_xingxing.png') no-repeat;
-		background-position: -8rpx 0rpx;
-		background-size:150rpx 260rpx ;
-		height: 26rpx;
+	}
+	.starTwo {
+		background: url('https://www.feiaizn.com/images/20200522114244_xingxing.png') no-repeat;
+		background-size: 150rpx 260rpx;
+		height: 22rpx;
+		background-position: -8rpx -28rpx; 
+	}
+	.starThree {
+		background: url('https://www.feiaizn.com/images/20200522114244_xingxing.png') no-repeat;
+		background-size: 150rpx 260rpx;
+		height: 22rpx;
+		background-position: -8rpx -51rpx; 
+	}
+	.starFour {
+		background: url('https://www.feiaizn.com/images/20200522114244_xingxing.png') no-repeat;
+		background-size: 150rpx 260rpx;
+		height: 22rpx;
+		background-position: -8rpx -74rpx; 
+	}
+	.starFive{
+		background: url('https://www.feiaizn.com/images/20200522114244_xingxing.png') no-repeat;
+		background-size: 150rpx 260rpx;
+		height: 22rpx;
+		background-position: -8rpx -97rpx; 
+	}
+	.starSix{
+		background: url('https://www.feiaizn.com/images/20200522114244_xingxing.png') no-repeat;
+		background-size: 150rpx 260rpx;
+		height: 22rpx;
+		background-position: -8rpx -120rpx; 
+	}
+	.starSeven{
+		background: url('https://www.feiaizn.com/images/20200522114244_xingxing.png') no-repeat;
+		background-size: 150rpx 260rpx;
+		height: 22rpx;
+		background-position: -8rpx -143rpx; 
+	}
+	.starEight{
+		background: url('https://www.feiaizn.com/images/20200522114244_xingxing.png') no-repeat;
+		background-size: 150rpx 260rpx;
+		height: 22rpx;
+		background-position: -8rpx -166rpx; 
+	}
+	.starNine{
+		background: url('https://www.feiaizn.com/images/20200522114244_xingxing.png') no-repeat;
+		background-size: 150rpx 260rpx;
+		height: 22rpx;
+		background-position: -8rpx -189rpx; 
+	}
+	.starTen{
+		background: url('https://www.feiaizn.com/images/20200522114244_xingxing.png') no-repeat;
+		background-size: 150rpx 260rpx;
+		height: 22rpx;
+		background-position: -8rpx -212rpx; 
+	}
+	.starEleven{
+		background: url('https://www.feiaizn.com/images/20200522114244_xingxing.png') no-repeat;
+		background-size: 150rpx 260rpx;
+		height: 22rpx;
+		background-position: -8rpx -235rpx; 
 	}
 	.address{
 		overflow: hidden;
@@ -164,12 +268,12 @@ export default {
 			color: #333333;
 	}
 	.apptMeasureHome_ft{
-		/* position: absolute;
+		position: fixed;
 		left: 0;
-		bottom: 20rpx; */
+		bottom: 0;
 		width: 100%;
 		height: 100rpx;
-		margin-top: 100px;
+		/* margin-top: 20px; */
 		
 	}
 	.btn{

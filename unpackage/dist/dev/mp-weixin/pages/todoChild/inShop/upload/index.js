@@ -167,34 +167,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 13));
 var _image = __webpack_require__(/*! @/config/image.js */ 35);
-var _loan = __webpack_require__(/*! @/api/todoChild/loan.js */ 141);
+var _loan = __webpack_require__(/*! @/api/todoChild/loan.js */ 142);
 var _inShop = __webpack_require__(/*! @/api/inShop.js */ 382);
 var _router = __webpack_require__(/*! @/config/router.js */ 22);
 var _api = __webpack_require__(/*! @/config/api.js */ 20);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
-
-
 var _self;var _default =
 {
   data: function data() {
     return {
       imglogo: _image.COMPANY_LOGO,
       imgupload: _image.UPLOAD,
-      ageData: [
-      { name: "营业执照", img: '' },
-      { name: "公司Logo", img: '' },
-      { name: "门店照片", img: '' }],
-
-
-      photoData: [
-      { name: "装修案例", img: '' }],
-
+      ageData: [{ name: '营业执照', img: '' }, { name: '公司Logo', img: '' }, { name: '门店照片', img: '' }, { name: '装修案例', img: '' }],
+      photoData: [{ name: '装修案例', img: '' }],
 
       list: {},
       show: false };
-
 
   },
   methods: {
@@ -208,13 +200,10 @@ var _self;var _default =
 
     },
     toast: function toast(v) {
-
       uni.showToast({
         title: v,
         duration: 2000,
         icon: 'none' });
-
-
 
     },
     toLinkChoose: function toLinkChoose() {
@@ -230,13 +219,13 @@ var _self;var _default =
         this.toast('请上传门店照片');
         return;
       }
-      if (!this.photoData[0].img) {
+      if (!this.ageData[3].img) {
         this.toast('请上传装修案例');
         return;
       }
       (0, _inShop.postShop)(this.list).then(function (res) {
         uni.showToast({
-          title: "提交成功",
+          title: '提交成功',
           icon: 'success',
           duration: 2000 });
 
@@ -266,11 +255,9 @@ var _self;var _default =
             // filePath  需要上传的文件
             filePath: imgFiles,
             header: _defineProperty({
-
-              "Content-Type": "multipart/form-data" }, "Content-Type",
+              'Content-Type': 'multipart/form-data' }, "Content-Type",
 
             'application/json'),
-
 
             name: 'file',
             success: function success(res1) {
@@ -280,37 +267,38 @@ var _self;var _default =
               // console.log(e)
               // console.log(_self.dataList[e])
               // console.log(res1.data )
-              if (e == 3) {
+              // 									if(e == 3){
 
-                var w = JSON.parse(res1.data);
-                _self.photoData[0].img = imgFiles;
-                _self.list.case = [];
-                _self.list.case.push({
-                  "caseName": '',
-                  "caseShowImg": w.data,
-                  "caseDescribe": '' });
+              // 										let w=JSON.parse(res1.data)
+              // 										_self.photoData[0].img = imgFiles
+              // 										_self.list.case =[]
+              // 										_self.list.case.push({
+              //     "caseName":'',
+              //     "caseShowImg":w.data,
+              //     "caseDescribe":''
+              // })
+              // 									} else{
+              // 										let r =['businessImg','logo','storePhotos','details']
 
-              } else {
-                var r = ['businessImg', 'icon', 'storePhotos'];
+              // 										let w=JSON.parse(res1.data)
+              // 										_self.ageData[e].img = imgFiles
+              // 										_self.list[r[e]] = w.data
+              // 									}
+              var r = ['businessImg', 'logo', 'storePhotos', 'details'];
 
-                var _w = JSON.parse(res1.data);
-                _self.ageData[e].img = imgFiles;
-                _self.list[r[e]] = _w.data;
-              }
-
+              var w = JSON.parse(res1.data);
+              _self.ageData[e].img = imgFiles;
+              _self.list[r[e]] = w.data;
 
               // if(e ==='thisRunningWater'||e ==='spouseRunningWater') {
-              // 	_self.dataL[e].push(imgFiles);			
+              // 	_self.dataL[e].push(imgFiles);
               // 	_self.dataList[e].push(w.data);
 
               // } else{
               // 	_self.dataList[e] = w.data;
               // 	_self.dataL[e] = imgFiles;
               // }
-
-
             } });
-
 
         } });
 

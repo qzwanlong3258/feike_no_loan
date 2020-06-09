@@ -56,6 +56,7 @@ background-color: #FFFFFF;
 <style scoped>
 	.measureHome{
 		width: 100%;
+		padding-bottom: 40rpx;
 		
 	}
 	.measureHome image{
@@ -69,7 +70,7 @@ background-color: #FFFFFF;
 		display: flex;
 		padding-left: 20rpx;
 		padding-right: 20rpx;
-		margin: 40rpx 0;
+		margin: 60rpx 0 20rpx 0;
 		
 	}
 	.scheduleBtn{

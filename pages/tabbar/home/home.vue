@@ -115,7 +115,22 @@ export default {
 	    // let recommendId=scene.split('&')[1];
 	    //其他逻辑处理。。。。。
 	  }
-			
+	
+	wx.getSetting({
+	      success: function(res){
+	        if (res.authSetting['scope.userInfo']) {
+	          wx.getUserInfo({
+	            success: function(res) {
+					console.log(res)
+	              console.log(res.userInfo)
+	              //用户已经授权过
+	            }
+	          })
+	        }
+	      }
+	    })
+	
+	
 			
 	},
 	methods: {
@@ -149,7 +164,7 @@ export default {
 		　　var that = this;
 		　　// 设置菜单中的转发按钮触发转发事件时的转发内容
 		　　var shareObj = {
-		　　　　title: "非客钱包",        // 默认是小程序的名称(可以写slogan等)
+		　　　　title: "非客有家",        // 默认是小程序的名称(可以写slogan等)
 		　　　　path: '/pages/tabbar/home/home',        // 默认是当前页面，必须是以‘/’开头的完整路径
 		　　　　imageUrl: FENXIANG,     //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
 		　　　　success: function(res){

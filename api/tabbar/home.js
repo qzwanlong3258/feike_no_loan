@@ -11,6 +11,8 @@ export function loadHomeCarousel(data) {
 	return request({
 		method: 'GET',
 		url: LOAD_HOME_CAROUSEL,
+		showLoading: false,
+		hideLoading: false,
 		data,
 	});
 }
@@ -20,6 +22,8 @@ export function loadHomeNews(data) {
 	return request({
 		method: 'GET',
 		url: LOAD_HOME_NEWS,
+		showLoading: false,
+		hideLoading: false,
 		data,
 	});
 }

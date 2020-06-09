@@ -133,6 +133,13 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -187,22 +194,40 @@ var _image = __webpack_require__(/*! @/config/image.js */ 35);
 var _package = __webpack_require__(/*! @/config/package.js */ 67);
 
 
-var _decorateHome = __webpack_require__(/*! @/api/decorateHome.js */ 281);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var QQMapWX = __webpack_require__(/*! @/utils/qqmap-wx-jssdk.js */ 292);
+var _decorateHome = __webpack_require__(/*! @/api/decorateHome.js */ 115);
+var _router = __webpack_require__(/*! @/config/router.js */ 22);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var QQMapWX = __webpack_require__(/*! @/utils/qqmap-wx-jssdk.js */ 292);
+
+
 var _self;var _default =
 {
   data: function data() {
     return {
       img: [_image.DECORATE_HOUSE, _image.STAR, _image.MASK_IMG, _image.CROSS],
-      count: 0,
       show: false,
       item: {}, //装企信息
       dataList: [],
       dataL: {},
-      uuid: '' };
+      uuid: '',
+      imgShow: false };
 
   },
   methods: {
 
+
+    imgshow: function imgshow() {
+      _self.imgShow = true;
+    },
+    linkToCoupon: function linkToCoupon() {
+
+      (0, _decorateHome.loadCoupon)().then(function (res) {
+        var a = res.list;
+        var e = JSON.stringify(a);
+        uni.navigateTo({
+          url: "".concat(_router.COUPON, "?data=").concat(e) });
+
+      });
+
+    },
 
     handerCheckInChange: function () {var _handerCheckInChange = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(e) {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
 
@@ -216,8 +241,9 @@ var _self;var _default =
 
     },
     get: function get(e) {
-      this.count++;
-      if (this.count == 1) {
+      var count = 0;
+      count++;
+      if (count == 1) {
         this.show = !this.show;
         _self.dataL = e;
 
@@ -228,9 +254,11 @@ var _self;var _default =
     },
 
     map: function map() {
+      console.log(31232);
       var qqmapsdk = new QQMapWX({
         key: 'RXMBZ-V3XKW-EPHR7-R7B2O-S75AK-3TFHW' });
 
+      console.log(this.item.address);
       qqmapsdk.geocoder({
         address: this.item.address,
         success: function success(res) {
@@ -246,7 +274,21 @@ var _self;var _default =
 
 
     },
-    getList: function getList(e) {
+    getTime: function getTime() {
+
+      var date = new Date(),
+      year = date.getFullYear(),
+      month = date.getMonth() + 1,
+      day = date.getDate(),
+      hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours(),
+      minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes(),
+      second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+      month >= 1 && month <= 9 ? month = "0" + month : "";
+      day >= 0 && day <= 9 ? day = "0" + day : "";
+      var timer = year + '-' + month + '-' + day;
+      return timer;
+    },
+    getList: function getList(e) {var _this = this;
       (0, _decorateHome.getCoupon)({ uuid: e.uuid }).then(function (res) {
         console.log(res);
 
@@ -254,15 +296,15 @@ var _self;var _default =
         _self.dataList = res.list.map(function (res) {
           // console.log(Date.parse(res.end.replace('-', '/')))
           // console.log(new Date().getTime())
-          if (Number(Date.parse(res.end.replace('-', '/'))) > new Date().getTime()) {
+          if (Number(Date.parse(res.end.replace('-', '/'))) < Number(Date.parse(_this.getTime().replace('-', '/')))) {
             return _objectSpread({},
             res, {
-              show: true });
+              show: false });
 
           } else {
             return _objectSpread({},
             res, {
-              show: false });
+              show: true });
 
           }
         });
@@ -274,7 +316,9 @@ var _self;var _default =
     _self = this;
     this.item = JSON.parse(options.item);
     this.getList(this.item);
+
   } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

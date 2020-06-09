@@ -29,6 +29,8 @@ export function calender(data) {
 	return request({
 		method: 'GET',
 		url: CALENDER,
+		showLoading: false,
+		hideLoading: false,
 		data
 	});
 }

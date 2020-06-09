@@ -168,7 +168,7 @@ var _image = __webpack_require__(/*! @/config/image.js */ 35);
 var home = _interopRequireWildcard(__webpack_require__(/*! @/api/tabbar/home.js */ 36));
 var _city = __webpack_require__(/*! @/api/city.js */ 37);
 var _router = __webpack_require__(/*! @/config/router.js */ 22);
-var _storage = __webpack_require__(/*! @/utils/storage.js */ 17);function _getRequireWildcardCache() {if (typeof WeakMap !== "function") return null;var cache = new WeakMap();_getRequireWildcardCache = function _getRequireWildcardCache() {return cache;};return cache;}function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;}if (obj === null || typeof obj !== "object" && typeof obj !== "function") {return { default: obj };}var cache = _getRequireWildcardCache();if (cache && cache.has(obj)) {return cache.get(obj);}var newObj = {};var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;if (desc && (desc.get || desc.set)) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}newObj.default = obj;if (cache) {cache.set(obj, newObj);}return newObj;}var YldTop = function YldTop() {__webpack_require__.e(/*! require.ensure | pages/tabbar/home/components/YldTop */ "pages/tabbar/home/components/YldTop").then((function () {return resolve(__webpack_require__(/*! ./components/YldTop.vue */ 488));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var SwiperImg = function SwiperImg() {__webpack_require__.e(/*! require.ensure | components/SwiperImg */ "components/SwiperImg").then((function () {return resolve(__webpack_require__(/*! ../../../components/SwiperImg.vue */ 495));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var YldHot = function YldHot() {__webpack_require__.e(/*! require.ensure | pages/tabbar/home/components/YldHot */ "pages/tabbar/home/components/YldHot").then((function () {return resolve(__webpack_require__(/*! ./components/YldHot.vue */ 502));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var YldNav = function YldNav() {Promise.all(/*! require.ensure | pages/tabbar/home/components/YldNav */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/tabbar/home/components/YldNav")]).then((function () {return resolve(__webpack_require__(/*! ./components/YldNav.vue */ 509));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
+var _storage = __webpack_require__(/*! @/utils/storage.js */ 17);function _getRequireWildcardCache() {if (typeof WeakMap !== "function") return null;var cache = new WeakMap();_getRequireWildcardCache = function _getRequireWildcardCache() {return cache;};return cache;}function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;}if (obj === null || typeof obj !== "object" && typeof obj !== "function") {return { default: obj };}var cache = _getRequireWildcardCache();if (cache && cache.has(obj)) {return cache.get(obj);}var newObj = {};var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;if (desc && (desc.get || desc.set)) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}newObj.default = obj;if (cache) {cache.set(obj, newObj);}return newObj;}var YldTop = function YldTop() {__webpack_require__.e(/*! require.ensure | pages/tabbar/home/components/YldTop */ "pages/tabbar/home/components/YldTop").then((function () {return resolve(__webpack_require__(/*! ./components/YldTop.vue */ 498));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var SwiperImg = function SwiperImg() {__webpack_require__.e(/*! require.ensure | components/SwiperImg */ "components/SwiperImg").then((function () {return resolve(__webpack_require__(/*! ../../../components/SwiperImg.vue */ 505));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var YldHot = function YldHot() {__webpack_require__.e(/*! require.ensure | pages/tabbar/home/components/YldHot */ "pages/tabbar/home/components/YldHot").then((function () {return resolve(__webpack_require__(/*! ./components/YldHot.vue */ 512));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var YldNav = function YldNav() {Promise.all(/*! require.ensure | pages/tabbar/home/components/YldNav */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/tabbar/home/components/YldNav")]).then((function () {return resolve(__webpack_require__(/*! ./components/YldNav.vue */ 519));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
 var _self;var _default =
 {
   data: function data() {
@@ -251,6 +251,21 @@ var _self;var _default =
       //其他逻辑处理。。。。。
     }
 
+    wx.getSetting({
+      success: function success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success: function success(res) {
+              console.log(res);
+              console.log(res.userInfo);
+              //用户已经授权过
+            } });
+
+        }
+      } });
+
+
+
 
   },
   methods: {
@@ -284,7 +299,7 @@ var _self;var _default =
       var that = this;
       // 设置菜单中的转发按钮触发转发事件时的转发内容
       var shareObj = {
-        title: "非客钱包", // 默认是小程序的名称(可以写slogan等)
+        title: "非客有家", // 默认是小程序的名称(可以写slogan等)
         path: '/pages/tabbar/home/home', // 默认是当前页面，必须是以‘/’开头的完整路径
         imageUrl: _image.FENXIANG, //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
         success: function success(res) {

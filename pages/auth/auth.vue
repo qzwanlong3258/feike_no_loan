@@ -6,6 +6,9 @@
 		<button class="auth-btn title-font" open-type="getUserInfo" @getuserinfo="getUserInfo">
 			微信一键授权
 		</button>
+		<button class="auth-btn title-font" style="background: #FFFFFF;color: #000000;border: 2rpx solid #D2D2D2;margin-top: 100rpx;" @click="goBack">
+			取消
+		</button>
 		<!-- #endif -->
 		<!--  #ifndef MP-WEIXIN -->
 			<image class="gxg-logo-nowx" :src="yldLogo"></image>

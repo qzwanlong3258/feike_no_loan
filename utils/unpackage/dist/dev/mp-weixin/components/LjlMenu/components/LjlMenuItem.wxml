@@ -1,0 +1,1 @@
+<view class="menu-item-box data-v-2add1171"><image class="icon data-v-2add1171" src="{{infor.icon}}" mode="aspectFit"></image><text class="title data-v-2add1171">{{infor.title}}</text></view>

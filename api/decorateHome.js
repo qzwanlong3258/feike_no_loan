@@ -11,6 +11,8 @@ export function getShopList(data) {
 	return request({
 		method: 'GET',
 		url: SHOP_LIST,
+		showLoading: false,
+		hideLoading: false,
 		data
 	});
 }

@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view v-if="showAuth">
 		<view class="hd">
 			设计师认证信息
 		</view>
@@ -7,19 +7,19 @@
 			<view class="box">
 				<view class="box-left">姓名</view>
 				<view class="box-right">
-					<input type="text" v-model="dataList.name" placeholder="请输入您的姓名">
+					<input type="text" v-model="dataList.name" placeholder-style="font-size:28rpx" placeholder="请输入您的姓名">
 				</view>
 			</view>
 			<view class="box">
 				<view class="box-left">手机号码</view>
 				<view class="box-right">
-					<input type="number"  v-model="dataList.phone" maxlength="11" placeholder="请输入您的手机号码">
+					<input type="number"  v-model="dataList.phone" maxlength="11" placeholder-style="font-size:28rpx" placeholder="请输入您的手机号码">
 				</view>
 			</view>
 			<view class="box">
 				<view class="box-left">工作年限(年)</view>
 				<view class="box-right" style="position: relative;">
-					<input type="text" v-model="dataList.ageNumber" @input='timeInput' placeholder="请输入您的从业年限">
+					<input type="text" v-model="dataList.ageNumber" @input='timeInput' placeholder-style="font-size:28rpx" placeholder="请输入您的从业年限">
 					
 					<!-- <view style="font-size: 28rpx;position: absolute;left: 60rpx;top: 2rpx;" :hidden='!timeShow'>平米</view> -->
 					
@@ -29,7 +29,7 @@
 			<view class="box">
 				<view class="box-left">工作单位名称</view>
 				<view class="box-right">
-					<input type="text" v-model="dataList.unit" placeholder="请输入您的现工作单位名称">
+					<input type="text" v-model="dataList.unit" placeholder-style="font-size:28rpx" placeholder="请输入您的现工作单位名称">
 				</view>
 			</view>
 		</view>
@@ -45,6 +45,7 @@ import {postDesigner} from '@/api/wx.js'
 import { getStorage,setStorage } from '@/utils/storage.js';
 import {setApplyId,addScore,addScoreRecord,getApplyId} from '@/api/auth.js'
 import {getUserRole} from "@/api/auth.js";
+const { AUTH } = require('../../../config/router.js');
 var _self
 
 
@@ -54,7 +55,8 @@ export default {
 			dataList:{},
 			timeShow:false,
 			userInfo:{},
-			role:[]
+			role:[],
+			showAuth:false
 		}
 	},
 	methods:{
@@ -152,20 +154,32 @@ export default {
 	},
 	async onLoad() {
 		_self=this
-		this.userInfo = getStorage('userInfo');
-		
-		let e = await getUserRole()
-		console.log(e)
-		// _self.role =e.roleName.split(',')
-		let userNew={
-			..._self.userInfo,
+		const isLogin = getStorage('isLogin');
+		if (isLogin) {
+			this.showAuth=true
+			this.userInfo = getStorage('userInfo');
 			
-		}
-		if(e.roleName){
-			this.role=e.roleName.split(',')
+			let e = await getUserRole()
+			console.log(e)
+			// _self.role =e.roleName.split(',')
+			let userNew={
+				..._self.userInfo,
+				
+			}
+			if(e.roleName){
+				this.role=e.roleName.split(',')
+			} else {
+				this.role=[]
+			}
 		} else {
-			this.role=[]
-		}
+			
+			let pages = getCurrentPages();
+			if (pages.length > 0 && AUTH.indexOf('/' + pages[pages.length - 1].route) === 0) return;
+			uni.reLaunch({
+				url:`${AUTH}?name=${'designer'}`
+			});	
+			}
+		
 		
 		// userNew.role=e.roleName.split(',')
 		// for(let i =0;i<userNew.role.length;i++){
@@ -176,6 +190,9 @@ export default {
 		// }
 		// setStorage('userInfo',userNew)
 		// _self.userInfo = getStorage('userInfo');
+		
+		
+		
 	}
 };
 </script>
@@ -213,7 +230,7 @@ export default {
 	.box-right{
 		flex: 1;
 		color: #666666;
-		text-align: right;
+		text-align: left;
 	}
 	.apptMeasureHome_ft{
 		/* position: absolute;

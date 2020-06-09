@@ -8,7 +8,7 @@
 
 module.exports = {
 	/** 授权 */
-	COMPANY_LOGO: `${staticUrl}/companyLogo.png`,
+	COMPANY_LOGO: `https://www.feiaizn.com/images/20200608145412_comlogo.png`,
 	/** 用户头像 */
 	TOUXIANG_LOGO: `${staticUrl}/touxianglogo.png`,
 	// 首页底部图片
@@ -99,7 +99,7 @@ module.exports = {
 	TESTSUCCESS: `${staticUrl}/todoChild/testonetest/完成@2x.png`,
 	TESTFAIL: `${staticUrl}/todoChild/testonetest/3.0-未完成@2x.png`,
 	// 约量房
-	LOAN_PICTURE: `https://www.feiaizn.com/images/20200518120407_loanPicture.png`,
+	LOAN_PICTURE: `https://www.feiaizn.com/images/20200601172853_loan.png`,
 	// LOAN_PICTURE: `${staticUrl}/todoChild/装修分期付，轻松就入住.png`,
 	MEASUREHOME: `${staticUrl}/todoChild/约量房.png`,
 	MEASUREHOME_SUCCESS: `${staticUrl}/todoChild/约量房成功@2x.png`,
@@ -183,18 +183,29 @@ module.exports = {
 	SIGNIN:`${staticUrl}/todoChild/calender/签到@2x.png`,
 	SIGNIN_IMAGE:`${staticUrl}/todoChild/calender/时间@2x.png`,
 	//分享
-	FENXIANG:`${staticUrl}/fenxiang.png`,
+	FENXIANG:`https://www.feiaizn.com/images/20200601151507_fenxiang.jpg`,
 	//分销中心积分协议
 	JIFEN_PIC:'https://www.feiaizn.com/images/20200514171649_jifenfenxiao.png',
 	//图标
 	BOTTOM_JIANTOU:'https://www.feiaizn.com/images/20200516120658_xiatubiao.png',
 	//装企联盟顶部
-	DECORATE_HOUSE:'https://www.feiaizn.com/images/20200522094914_outFitTop.png',
+	DECORATE_HOUSE:'https://www.feiaizn.com/images/20200527142354_4e6d517e31fb6692320d165fad7e500.png',
 	
 	//星星
 	STAR:'https://www.feiaizn.com/images/20200522114244_xingxing.png',
 	MASK_IMG:'https://www.feiaizn.com/images/20200522164139_youhuijuan.png',
 	
-	//
-	COUPON_BG:"https://www.feiaizn.com/images/20200524201641_youhuijuanbeijing.png"
+	//优惠卷背景图片
+	COUPON_BG:"https://www.feiaizn.com/images/20200524201641_youhuijuanbeijing.png",
+	
+	//记录
+	MINE_RECORD:"https://www.feiaizn.com/images/20200525111941_jilu.png",
+	
+	//客服
+	MINE_KEFU:'https://www.feiaizn.com/images/20200525112119_kefu.png',
+	
+	//VIP
+	VIP:'https://www.feiaizn.com/images/20200525112629_v.png'
+	
+	
 }

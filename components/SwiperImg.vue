@@ -3,7 +3,7 @@
 		<swiper class="swiper" :style="{height:`${heightNum}rpx`}" :autoplay='autoplay' :circular='circular'  @change='changeDot'>
 			<swiper-item v-for="(item,index) in imgList" :key="index" @click="linkToPage(item.url)">
 				<view class="swiper-item">
-					<image :src="item.img"></image>
+					<image :src="item.img" style="display: block;"></image>
 				</view>
 			</swiper-item>
 		</swiper>
@@ -62,6 +62,7 @@
 <style lang="scss" scoped>
 	.swiper {
 		width: 100%;
+		display: block;
 
 		.swiper-item {
 			width: 100%;

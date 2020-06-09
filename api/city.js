@@ -10,6 +10,8 @@ export function loadCity(data) {
 	return request({
 		method: 'GET',
 		url: LOAD_CITY,
+		showLoading: false,
+		hideLoading: false,
 		data
 	});
 }

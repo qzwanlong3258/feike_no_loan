@@ -15,6 +15,8 @@ export function getGoodsList(data) {
 		method: 'GET',
 		url: LOAD_GOODS_LIST,
 		showSuccessToast: true,
+		showLoading: false,
+		hideLoading: false,
 		data
 	});
 }
@@ -25,6 +27,8 @@ export function getGoodsDetail(data) {
 		method: 'GET',
 		url: LOAD_GOODS_DETAIL,
 		showSuccessToast: true,
+		showLoading: false,
+		hideLoading: false,
 		data
 	});
 }

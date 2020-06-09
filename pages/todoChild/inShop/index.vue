@@ -1,4 +1,5 @@
 <template>
+	
 	<view class="inShop" v-if="showAuth">
 		<image class="inShop-hd" :src="imglogo"></image>
 		<view style="color: #333333;font-size: 14px;text-align: center;margin-bottom: 20px;">欢迎入驻非客有家</view>
@@ -74,6 +75,7 @@
 		</view>
 		
 	</view>
+	
 </template>
 
 <script>
@@ -242,10 +244,11 @@ export default {
 			
 			let pages = getCurrentPages();
 			if (pages.length > 0 && AUTH.indexOf('/' + pages[pages.length - 1].route) === 0) return;
-			uni.reLaunch({
+			uni.redirectTo({
 				url:`${AUTH}?name=${'inShop'}`
 			});	
 			}
+			
 	}
 };
 </script>
@@ -256,9 +259,14 @@ export default {
 </style>
 <style scoped>
 	.inShop{
-		height: 500px;
+		
 		
 		padding-top: 20px;
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		top: 0;
+		right: 0;
 	}
 	.inShop-hd{
 		display: block;

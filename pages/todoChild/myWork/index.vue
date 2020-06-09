@@ -16,10 +16,11 @@
 					{{item.address}}
 				</view>
 			</view>
+			<null-data v-if="!dataList.length" class="nullData_view" />
 		</view>
 		<view class="box-left" :hidden='states.index==0'>
-			<view class="myWork-Card">
-				<view class="myWork-Card-hd" @click="linkToDetail()" v-for="(item,index) in dataListCom" :key="index">
+			<view class="myWork-Card" @click="linkToDetail" v-for="(item,index) in dataListCom" :key="index">
+				<view class="myWork-Card-hd" >
 					<view class="Card-hd-left">{{item.loanerName}}</view>
 					<view class="Card-hd-mid"></view>
 					<view class="Card-hd-right">{{item.lastTime|time}}</view>
@@ -28,6 +29,7 @@
 					{{item.address}}
 				</view>
 			</view>
+			<null-data v-if="!dataListCom.length" class="nullData_view" />
 		</view>
 		
 	</view>
@@ -38,10 +40,14 @@
 var _self;
 import LjlStates from './components/changeStates';
 import { MYWORKDETAIL} from '@/config/router.js';
-import { myWorkFace } from '@/api/myWork.js'
+import { myWorkFace } from '@/api/myWork.js';
+
+import NullData from '@/components/NullData.vue';
+
 export default {
 	components:{
-		LjlStates
+		LjlStates,
+		NullData
 	},
 	data() {
 		return{
@@ -97,6 +103,7 @@ export default {
 		// console.log(c)
 		// p.push(...c.list)
 		_self.dataList =p
+		console.log(_self.dataList)
 		let o=[]
 		let e = await myWorkFace({state:2})
 		console.log(e)
@@ -105,6 +112,7 @@ export default {
 		console.log(f)
 		o.push(...f.list)
 		_self.dataListCom = o
+		console.log(_self.dataListCom)
 	}
 
  }

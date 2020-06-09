@@ -1,0 +1,1 @@
+<view class="showroom-item-box data-v-5f5fea96" style="{{'color:'+(color)+';'}}"><text class="data-v-5f5fea96">{{infor.title}}</text><text class="data-v-5f5fea96">{{"￥"+infor.content}}</text></view>

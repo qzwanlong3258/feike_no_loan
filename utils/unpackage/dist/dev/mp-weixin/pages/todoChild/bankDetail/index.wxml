@@ -1,0 +1,1 @@
+<view hidden="{{!imgShow}}"><view><image style="width:100%;" mode="widthFix" src="{{img}}" data-event-opts="{{[['load',[['imgshow',['$event']]]]]}}" bindload="__e"></image></view></view>

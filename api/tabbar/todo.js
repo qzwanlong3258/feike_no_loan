@@ -21,6 +21,8 @@ export function loadIntegralDeyail(data) {
 	return request({
 		method: 'GET',
 		url: GET_SCORE_DETAIL,
+		showLoading: false,
+		hideLoading: false,
 		data,
 	});
 }

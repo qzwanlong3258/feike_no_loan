@@ -32,6 +32,7 @@
 /* 文章场景相关 */
 .swiper.data-v-24209f53 {
   width: 100%;
+  display: block;
 }
 .swiper .swiper-item.data-v-24209f53 {
     width: 100%;

@@ -2,7 +2,7 @@
 	<view class="nav-list">
 		<view v-for='(item,index) in navList' :key='index' class="nav-clomun" @click="linkToRouter({item,index})">
 			<image class="show-icon" :src="item.icon" />
-			<text class="nav-name content-font page_text-single-omit">{{item.bname}}</text>
+			<text class="nav-name content-font page_text-single-omit" style="text-align: center;" >{{item.bname}}</text>
 		</view>
 	</view>
 </template>
@@ -54,6 +54,7 @@
 			linkToRouter({item}) {
 				console.log(this.IsHttpUrl(item.url) )
 				if(!item.url){return}
+				
 				if(this.IsHttpUrl(item.url)){
 					let e=item.url
 					var testmsg=e.substring(e.lastIndexOf('.')+1)
@@ -94,10 +95,10 @@
 								
 							}
 				}
-				
-				uni.navigateTo({
+				console.log(item.bname)
+				uni.reLaunch({
 					url: formatHomeRoute(item.bname)
-				});
+				})
 			}
 		}
 	}

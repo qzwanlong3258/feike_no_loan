@@ -93,5 +93,6 @@
     }
   },
   "resizable": true,
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap79.json"
 }
